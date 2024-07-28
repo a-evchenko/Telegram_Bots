@@ -17,7 +17,7 @@ chat_id = None
 # Функция для отправки опроса
 def send_poll():
     if chat_id:
-        bot.send_poll(chat_id, "Кататься идем?", ["Да", "Нет"])
+        bot.send_poll(chat_id, "Вопрос???", ["Вариант ответа 1", "Вариант ответа 2", "Вариант ответа 3"])
 
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
@@ -25,15 +25,15 @@ def start_polling(message):
     global chat_id
     if message.chat.type in ["group", "supergroup"]:
         chat_id = message.chat.id
-        bot.send_message(chat_id, "Опросы будут отправляться каждые 2 минуты.")
-        scheduler.add_job(send_poll, 'interval', minutes=2, id='poll_job', replace_existing=True)
+        bot.send_message(chat_id, "Опрос по посещению офиса будет отправляться каждую субботу в 12:00")
+        scheduler.add_job(send_poll, CronTrigger(day_of_week='sat', hour=9, minute=0), id='poll_job', replace_existing=True)
 
 # Обработчик команды /stop
 @bot.message_handler(commands=['stop'])
 def stop_polling(message):
     global chat_id
     if message.chat.type in ["group", "supergroup"]:
-        bot.send_message(message.chat.id, "Опросы остановлены.")
+        bot.send_message(message.chat.id, "Опрос остановлен")
         scheduler.remove_job('poll_job')
         chat_id = None
 
