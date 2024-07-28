@@ -5,7 +5,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 
 # устанавливаем токен
-bot = telebot.TeleBot('6918345271:AAHyk2wlSf_R1mPgUSzszTl5jtRzyLk927o')
+bot = telebot.TeleBot('TOKEN')
 
 # создаем планировщик задач
 scheduler = BackgroundScheduler()
