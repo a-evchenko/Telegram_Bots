@@ -4,7 +4,7 @@
 ## Требования
 
 - Python 3.7+
-- Библиотеки Python: `python-telegram-bot`, `apscheduler`
+- Библиотеки Python: `pyTelegramBotAPI`, `APScheduler`
 - Telegram API токен
 
 
