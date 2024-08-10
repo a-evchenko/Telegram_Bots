@@ -25,7 +25,7 @@ def start_polling(message):
     global chat_id
     if message.chat.type in ["group", "supergroup"]:
         chat_id = message.chat.id
-        bot.send_message(chat_id, "Опрос по посещению офиса будет отправляться каждую субботу в 12:00")
+        bot.send_message(chat_id, "Привет, я буду отправлять опрос каждую субботу в 12:00")
         scheduler.add_job(send_poll, CronTrigger(day_of_week='sat', hour=9, minute=0), id='poll_job', replace_existing=True)
 
 # Обработчик команды /stop
